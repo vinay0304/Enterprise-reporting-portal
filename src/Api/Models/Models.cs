@@ -7,3 +7,5 @@ public record DashboardMetrics(int TotalRecordsProcessed, int ActiveErrorsCount,
 public record ErrorLogEntry(int ErrorId, string SourceFile, string ErrorType, string ErrorMessage, DateTime CreatedAt, bool IsResolved);
 
 public record ReportRequest(string ReportName, string Parameters);
+
+public record ReportQueueJob(int RunId);

@@ -30,7 +30,7 @@ public class ReportQueueProcessor : BackgroundService
                 var db = scope.ServiceProvider.GetRequiredService<IDbService>();
 
                 // Check for Queued reports
-                var queuedReports = await db.QueryAsync<ReportMetadata>(
+                var queuedReports = await db.QueryAsync<ReportQueueJob>(
                     "SELECT TOP 5 run_id as RunId FROM report_runs WHERE status = 'Queued'");
 
                 foreach (var report in queuedReports)
