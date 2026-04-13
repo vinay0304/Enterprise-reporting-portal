@@ -1,0 +1,26 @@
+# .NET
+bin/
+obj/
+appsettings.Development.json
+logs/
+uploads/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+*.log
+reports/output/
+
+# Frontend
+.DS_Store
+
+# SQL
+*.bak
+*.mdf
+*.ldf

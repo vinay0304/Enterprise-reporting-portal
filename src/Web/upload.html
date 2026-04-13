@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload | Enterprise Portal</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 1rem;
+            padding: 4rem;
+            text-align: center;
+            background: rgba(30, 41, 59, 0.5);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .upload-area:hover, .upload-area.drag-over {
+            border-color: var(--accent-blue);
+            background: rgba(30, 41, 59, 0.8);
+        }
+        #file-input { display: none; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside>
+            <div class="logo">ENTERPRISE PORTAL</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="reports.html">Reports</a></li>
+                    <li><a href="upload.html" class="active">Upload Data</a></li>
+                    <li><a href="errors.html">Error Log</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main>
+            <header style="margin-bottom: 2rem;">
+                <h1>Data Ingestion</h1>
+                <p style="color: var(--text-secondary);">Upload source files (CSV, JSON, XLSX) for validation and processing</p>
+            </header>
+
+            <div class="upload-area" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
+                <h3>Drag and drop files here</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">or click to browse your computer</p>
+                <input type="file" id="file-input" onchange="App.handleFileUpload(this.files)">
+            </div>
+
+            <div id="upload-status" style="margin-top: 2rem; display: none;">
+                <div class="stat-card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span id="upload-filename">filename.csv</span>
+                        <span id="upload-percent">0%</span>
+                    </div>
+                    <div style="height: 8px; background: var(--border-color); border-radius: 4px; overflow: hidden;">
+                        <div id="upload-progress-bar" style="height: 100%; width: 0%; background: var(--accent-blue); transition: width 0.3s;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/app.js"></script>
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            App.handleFileUpload(e.dataTransfer.files);
+        });
+    </script>
+</body>
+</html>

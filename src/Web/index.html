@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Enterprise Portal</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside>
+            <div class="logo">ENTERPRISE PORTAL</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Dashboard</a></li>
+                    <li><a href="reports.html">Reports</a></li>
+                    <li><a href="upload.html">Upload Data</a></li>
+                    <li><a href="errors.html">Error Log</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main>
+            <header style="margin-bottom: 2rem;">
+                <h1>System Overview</h1>
+                <p style="color: var(--text-secondary);">Real-time metrics and data quality status</p>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Records Processed</div>
+                    <div id="processed-count" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Errors</div>
+                    <div id="error-count" class="stat-value" style="color: var(--error);">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Today's Inflow</div>
+                    <div id="today-count" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Last Report Run</div>
+                    <div id="last-run" class="stat-value" style="font-size: 1.25rem; height: 3rem; display: flex; align-items: center;">N/A</div>
+                </div>
+            </div>
+
+            <section>
+                <h2>Quick Actions</h2>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button onclick="location.href='upload.html'" class="btn btn-primary">Ingest New File</button>
+                    <button onclick="location.href='reports.html'" class="btn" style="background: var(--bg-card); border: 1px solid var(--border-color); color: white;">Generate Reports</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            App.loadDashboard();
+        });
+    </script>
+</body>
+</html>

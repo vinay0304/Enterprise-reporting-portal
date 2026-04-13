@@ -1,0 +1,9 @@
+pyodbc
+pandas
+sqlalchemy
+openpyxl
+reportlab
+argparse
+python-dotenv
+pytest
+pip-chill

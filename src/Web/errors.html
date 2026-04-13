@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Log | Enterprise Portal</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside>
+            <div class="logo">ENTERPRISE PORTAL</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="reports.html">Reports</a></li>
+                    <li><a href="upload.html">Upload Data</a></li>
+                    <li><a href="errors.html" class="active">Error Log</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main>
+            <header style="margin-bottom: 2rem;">
+                <h1>Data Quality Errors</h1>
+                <p style="color: var(--text-secondary);">History of validation and ingestion failures</p>
+            </header>
+
+            <div class="table-container">
+                <table id="errors-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Source</th>
+                            <th>Type</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="errors-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 0.5rem;">
+                <button id="prev-btn" class="btn" style="background: var(--bg-card); color: white;">Previous</button>
+                <button id="next-btn" class="btn" style="background: var(--bg-card); color: white;">Next</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            App.loadErrors();
+        });
+    </script>
+</body>
+</html>
