@@ -33,7 +33,7 @@ Run the SQL scripts in order:
 ### 2. Python Environment
 ```bash
 cd src/Scripts
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### 3. C# API
